@@ -9,7 +9,7 @@ def main():
         print(bmi, type(bmi))
         print(apply_limit(bmi, 26))
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"{type(e).__name__}: {e}")
 
 
 if __name__ == "__main__":

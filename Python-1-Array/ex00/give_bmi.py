@@ -1,7 +1,5 @@
-import numpy as np
-
-
-def give_bmi(height: list[int | float], weight: list[int | float]) -> list[int | float]:
+def give_bmi(height: list[int | float],
+             weight: list[int | float]) -> list[int | float]:
     """
     Calculate BMI values from lists of height (in meters) and weight (in kg).
 
@@ -18,11 +16,13 @@ def give_bmi(height: list[int | float], weight: list[int | float]) -> list[int |
     bmi_values = []
     for h, w in zip(height, weight):
         if not (isinstance(h, (int, float)) and isinstance(w, (int, float))):
-            raise ValueError("All values in height and weight lists must be integers or floats")
+            raise ValueError("All values in height and weight "
+                             "lists must be integers or floats")
         bmi = w / (h * h)
         bmi_values.append(bmi)
 
     return bmi_values
+
 
 def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
     """
@@ -38,7 +38,8 @@ def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
     result = []
     for value in bmi:
         if not isinstance(value, (int, float)):
-            raise ValueError("All values in BMI list must be integers or floats")
+            raise ValueError("All values in BMI list "
+                             "must be integers or floats")
         result.append(value > limit)
 
     return result
