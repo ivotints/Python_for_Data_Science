@@ -11,6 +11,7 @@ def convert(string: str) -> float:
         return float(string[:-1]) * 1000
     return float(string)
 
+
 def main():
     try:
         data = load("population_total.csv")
@@ -29,7 +30,8 @@ def main():
         country1_data = data[data['country'] == country1].iloc[0, 1:].to_dict()
         country2_data = data[data['country'] == country2].iloc[0, 1:].to_dict()
 
-        years = [int(year) for year in data.columns[1:] if str(year).isdigit() and 1800 <=int(year) <= 2050]
+        years = [int(year) for year in data.columns[1:] if
+                 str(year).isdigit() and 1800 <= int(year) <= 2050]
 
         pop1 = []
         pop2 = []
@@ -40,7 +42,7 @@ def main():
 
                 pop1.append(convert(p1))
                 pop2.append(convert(p2))
-            except Exception as e:
+            except Exception:
                 pop1.append(None)
                 pop2.append(None)
 
@@ -56,7 +58,8 @@ def main():
         plt.yticks(np.arange(20, 100, 20))
         plt.xticks(np.arange(1800, 2050, 40))
 
-        plt.title(f'Population Comparison: {country1} vs {country2} (1800-2050)')
+        plt.title(f'Population Comparison: {country1} vs {country2}'
+                  ' (1800-2050)')
         plt.xlabel('Year')
         plt.ylabel('Population')
         plt.legend()
@@ -64,6 +67,7 @@ def main():
 
     except Exception as e:
         print(f"{type(e).__name__}: {e}")
+
 
 if __name__ == "__main__":
     main()
